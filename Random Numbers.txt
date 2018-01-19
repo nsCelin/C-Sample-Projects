@@ -1,0 +1,64 @@
+var rand = new Random();
+var randomValues = Enumerable.Range(1,10).Select(_ => rand.Next(10)-5);
+Console.WriteLine(randomValues);
+
+Output
+IEnumerable<Int32> (10 items)
+4
+3
+-3
+-3
+3
+1
+-5
+1
+2
+1
+
+/*To print them in a list, we wrote a seperate function 
+to accept the values and print them as string*/
+var csvString = new Func<IEnumerable<int>,string>(values => 
+						{
+							return string.Join(",", values.Select(k => k.ToString()));
+						}); 
+								
+Console.WriteLine(csvString1(randomValues));
+-1,-2,-3,3,-5,1,0,-3,-1,-5
+
+Console.WriteLine(csvString(randomValues));
+-3,-3,4,-1,-1,2,-5,2,-5,-3
+
+Console.WriteLine(csvString(randomValues).OrderBy(x =>x));
+IOrderedEnumerable<Char>(24 items)
+/*After an OrderBy is performed, the result set is IOrderedEnumerable*/
+, 
+, 
+, 
+, 
+, 
+, 
+, 
+, 
+- 
+- 
+- 
+- 
+- 
+0 
+0 
+1 
+1 
+2 
+2 
+3 
+3 
+4 
+4 
+
+/*here ordering is correct because we are ordering and then 
+String.Join is called on those ordered values*/
+Console.WriteLine(csvString(randomValues.OrderBy(x =>x)));
+-4,-2,-2,-1,-1,-1,0,2,4,4
+
+------------------------------------------------------------------
+

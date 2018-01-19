@@ -1,0 +1,15 @@
+var list = new ArrayList();
+
+list.Add(1);
+list.Add(2);
+list.Add(3);
+
+//Console.WriteLine(list.Select(i=>i)); Arraylist does not contain a definition for 'Select'. Because Arraylist is old and ExtensionMethods cannot be applied Select
+Console.WriteLine(list.Cast<int>());
+
+
+Output
+IEnumerable<int32>(3 items)
+1
+2
+3

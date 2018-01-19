@@ -1,0 +1,49 @@
+1. Taking the OddSquares only
+
+var numbers = Enumerable.Range(1,10);
+var oddSquares = numbers.Select(x =>x*x).Where(y=> y%2==1);
+Console.WriteLine(oddSquares);
+
+IEnumerable<Int32> (5 items)
+
+1
+9 
+25 
+49 
+81 
+
+2. Filtering by OfType (type of Value)
+
+object[]  values= {1,2.5, 6, 7.8};
+object[]  values1= {1,2.5, 6, 7.8, 2.3f};
+
+var ints = values.OfType<int>();
+Console.WriteLine(ints);
+
+/*Prints int values*/
+IEnumerable<Int32>(2 items)
+1
+6
+
+/*No float values are present, hence 0 items. 
+Float should be accompanied by f.
+By default, all decimal values defaults to double.
+All non-decimal values default to int.*/
+var floats = values.OfType<float>();
+Console.WriteLine(floats);
+0 items 
+
+var floats1= values1.OfType<float>();
+Console.WriteLine(floats1);
+
+IEnumerable<Single> (1 item)
+2.3
+
+/*Prints the double values. The default decimal values*/
+var doubles = values.OfType<double>();
+Console.WriteLine(doubles);
+
+IEnumerable<Double> (2 items)
+2.5
+7.8
+

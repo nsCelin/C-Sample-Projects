@@ -1,0 +1,114 @@
+1. Console.WriteLine(Enumerable.Empty<int>());
+   Console.WriteLine(Enumerable.Empty<string>());
+
+Output
+
+0 items
+0 items
+
+
+2. Console.WriteLine(Enumerable.Repeat("hello",3));
+   /*Prints hello three times*/
+
+3. Console.WriteLine(Enumerable.Range(0,10));
+   /*prints the numbers 1 to 10*/
+
+4.Console.WriteLine(Enumerable.Range('a', 'z'-'a'));
+  /*Prints all the Int32 numbers for a to z-a*/
+
+5./*To print the alphabets*/
+  Console.WriteLine(Enumerable.Range('a', 'z'-'a').Select(c => (char)c));
+
+6.Console.WriteLine(Enumerable.Range(1,10).Select(i => new String('x',i))); 
+  //Here i is the number of times
+x 
+xx 
+xxx 
+xxxx 
+xxxxx 
+xxxxxx 
+xxxxxxx 
+xxxxxxxx 
+xxxxxxxxx 
+xxxxxxxxxx 
+
+7.var list = new ArrayList<int>(); 
+ //Exception is "The non-generic Arraylist cannot be used with type arguments"
+
+8.Console.WriteLine(list.Cast<int>().Average());
+ 2
+
+9. var numbers = Enumerable.Range(1,10);
+   var arc = numbers.ToArray();
+   Console.WriteLine(arc);
+
+Output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+10. var dict = numbers.ToDictionary(i => (double)i/10, i=>i%2==0);
+    Console.WriteLine(dict);
+
+Dictionary<Double, Boolean>
+0.1 False 
+0.2 True 
+0.3 False 
+0.4 True 
+0.5 False 
+0.6 True 
+0.7 False 
+0.8 True 
+0.9 False 
+1   True 
+
+11. var arr2 = new[]{1,2,3};
+    Console.WriteLine(arr2);
+    Console.WriteLine(arr2.Length);
+    //Here we are performing the Array's Operations
+
+Output
+Int[32]3 items
+1
+2
+3
+
+3
+
+var d = arr2.Select(i=>i);
+Console.WriteLine(d);
+/*arr2 is an IEnumerable, so we can perform the select operation*/
+
+Output
+IEnumerable<Int32>
+1
+2
+3
+
+12./*But in case , we assign above array to IEnumerable, then it looses
+   all properties of Array. So Length function cannot be called*/
+IEnumerable<int> a = new[]{1,2,3};
+var b = a.Length;
+
+Exception - IEnumerable has no defintion for Length.
+So if we want the array and IEnumerable to be dealt with together, then
+the best way is
+
+var a = new[]{1,2,3};
+var b = a.AsEnumerable();
+Console.WriteLine(b);
+
+Output
+Int32[]{3 items}
+1
+2
+3
+
+

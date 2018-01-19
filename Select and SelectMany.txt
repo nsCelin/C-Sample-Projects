@@ -1,0 +1,221 @@
+/*Select is a projection*/
+
+1. var numbers = Enumerable.Range(1,4);
+   var squares = numbers.Select(x => x*x);
+   Console.WriteLine(squares);
+
+Output
+IEnumerable<Int32>
+1
+4
+9
+16
+
+2. string sentence = "This is a nice sentence";
+   var lengths = sentence.Split();
+   Console.WriteLine(lengths);
+
+Output
+String[] (5 items)
+This
+is 
+a
+nice
+sentence
+/*Split is applied across a single string.
+Split cannot be applied across array of strings.*/
+
+3. Take the count of words
+
+string sentence1 = "This is a nice sentence";
+var lengths1 = sentence1.Split().Select(x => x.Length);
+Console.WriteLine(lengths1);
+
+Output
+IEnumerable<Int32>
+4
+2
+1
+4
+8
+
+4. Taking the count of letters in each words in sentence
+
+string sentence2 = "This is a nice sentence";
+var lengths2 = sentence2.Split().Select(x => new {x, x.Length});
+Console.WriteLine(lengths2);
+
+(5 items)
+x		Length
+This		4
+is		2
+a		1
+nice		4
+sentence	8
+
+/*Anonymous type is a new decoration, but instead of specifying the type, 
+you specify the members of the type.*/
+
+5. If you want to specify the right headings
+
+string sentence2 = "This is a nice sentence";
+var lengths2 = sentence2.Split().Select(x => new {Word = x, Size = x.Length});
+Console.WriteLine(lengths2);
+
+Word		Size
+This		4
+is		2
+a		1
+nice		4
+senetence	8
+
+6. U can Select from IEnumerable, but not use that select at all.
+
+Random rand = new Random();
+var randomNumbers = Enumerable.Range(1,10).Select(_ => rand.Next());
+/*Here _ is used to denote that you are not selecting anything,
+from Enumerable, but just selecting numbers from rand.
+Generates 10 random numbers.*/
+
+Output
+
+IEnumerable<Int32>(10 items)
+228730435 
+328658268 
+1419834519 
+1541766521 
+452185305 
+831640519 
+1501452065 
+1964290967 
+216174781 
+100816516 
+
+7. To get the numbers
+var sequences = new[] {"red.green.blue","orange","white.pink"};
+var splits = sequences.Select(x=>x);
+Console.WriteLine(splits);
+
+Output
+IEnumerable<String>(3 items)
+red.green.blue
+orange
+white.pink
+
+8.For the following below:
+var sequences = new[] {"red.green.blue","orange","white.pink"};
+var splits = sequences.Select(x=>x.Split(',')); -> x is a single element.
+						   Split is going to put an array 
+			of string, but only a single element is available.
+Console.WriteLine(splits);
+
+Output
+IEnumerale<String> (3 items)
+
+String[](1 item)
+red.green.blue
+
+String[](1 item)
+orange
+
+String[](1 item)
+white.pink
+
+9. For the below:
+var sequences = new[] {"red.green.blue","orange","white.pink"};
+var splits = sequences.Select(x=>x.Split('.'));
+Console.WriteLine(splits);
+
+IEnumerable<String> (3 items)
+String[] (3 items)
+red
+green
+blue
+
+String[] (1 item)
+orange
+
+String[] (2 items)
+white
+pink
+
+10. SelectMany is used to flatten a collection.
+/*MYU : Select takes an element one by one.
+Whereas SelectMany takes in the collection.*/
+
+var sequences = new[] {"red.green.blue","orange","white.pink"};
+var splits = sequences.SelectMany(x=>x.Split('.'));
+Console.WriteLine(splits);
+
+Output
+
+IEnumerable<String>(6 items)
+red
+green
+blue
+orange
+white
+pink
+
+
+11.Using the SelectMany
+var sequences1 = new[] {"red.green.blue","orange","white.pink"};
+var splits1 = sequences1.SelectMany(x=>x);
+Console.WriteLine(splits1);
+
+IEnumerable<char>(30 items)
+
+ 
+e 
+d 
+. 
+g 
+r 
+e 
+e 
+n 
+. 
+b 
+l 
+u 
+e 
+o 
+r 
+a 
+n 
+g 
+e 
+w 
+h 
+i 
+t 
+e 
+. 
+p 
+i 
+n 
+k 
+
+12. Select Each possibleCombination from below arrays
+
+string[] objects = {"house","car","bicycle"};
+string[] colours = {"red","green","blue"};
+var pairs = colours.SelectMany(_ =>objects, (c,o)=> $"Colour: {c} Objects : {o}");
+Console.WriteLine(pairs);
+
+/*This is a special overload for Select Many*/
+
+IEnumerable<String> (9 items)
+
+Colour: red Objects : house 
+Colour: red Objects : car 
+Colour: red Objects : bicycle 
+Colour: green Objects : house 
+Colour: green Objects : car 
+Colour: green Objects : bicycle 
+Colour: blue Objects : house 
+Colour: blue Objects : car 
+Colour: blue Objects : bicycle 
+
+
+

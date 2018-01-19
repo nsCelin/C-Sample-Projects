@@ -1,0 +1,123 @@
+void Main()
+{
+  var people = new List<Person>	
+  {
+  	 	new Person {Name = "Adam", Age = 20},
+	 	new Person {Name = "Adam", Age = 36},
+	 	new Person {Name = "Boris", Age = 18},
+		new Person {Name = "Claire", Age = 36},
+		new Person {Name = "Adam", Age = 20},
+		new Person {Name = "Jack", Age = 20}
+  };
+  
+  var byName = people.GroupBy(p=>p.Name);
+  Console.WriteLine(byName);
+}
+ 
+
+class Person
+{
+	public string Name;
+	public int Age;
+}
+
+Output
+
+/*The type of output is IGrouping.
+So the actual resultset is IEnumerable<IGrouping<string,Person>>*/
+IGrouping<string,Person>
+
+Key = Adam
+Name	Age
+Adam	20
+Adam	36
+Adam	20
+
+IGrouping<string,Person>
+
+Key = Boris
+Boris	18
+
+IGrouping<string,Person>
+
+Key = Claire
+Boris	36
+
+
+Console.WriteLine(people.GroupBy(p=>p.Age>30));
+
+Output
+
+IGrouping<string,Person>
+Key = True
+String 	Age
+
+Adam	20	
+Boris	18
+Adam	20
+Jack	18
+
+IGrouping<string,Person>
+Key = False
+String 	Age
+
+Adam	36
+Claire	36
+
+------------------------------------------------
+
+Console.WriteLine(p=> p.Name = "Adam" , p => p.Age>30);
+
+IEnumerable<IGrouping<String, Boolean>>
+False
+True
+False
+True
+False
+False
+
+/*First u iterate over Age, then you iterate over Name*/
+Console.WriteLine(people.GroupBy(p => p.Age , p => p.Name));
+
+/*The resultSet is IEnumerable of IGrouping (for GroupBy always)*/
+IEnumerable<IGrouping<Int32,String>>(3 items)
+
+Key = 20
+IGrouping<Int32,String> (3 items)
+Adam
+Adam
+Jack
+
+Key = 36
+IGrouping<Int32,String> (3 items)
+Adam
+Claire
+
+Key = 18
+IGrouping<Int32,String> (3 items)
+Boris
+
+-------------------------------------------------------------
+
+  foreach(var item in byAgeNames)
+  	Console.WriteLine(item);
+
+So each of these items are iterated, as it is an IEnumerable, which gives IGrouping.
+
+Key = 20
+IGrouping<Int32,String>
+Adam
+Adam
+Jack
+
+Key = 36
+IGrouping<Int32,String>
+Adam
+Claire
+
+Key = 18
+IGrouping<Int32,String>
+Boris
+
+----------------------------------------------------------------
+

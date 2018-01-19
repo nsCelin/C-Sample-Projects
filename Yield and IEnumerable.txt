@@ -1,0 +1,39 @@
+void Main()
+{
+	var person = new Person("Person1", "Person2", "Person3");
+	
+	foreach(var name in person.Names)
+	{
+		Console.WriteLine(name);
+	}
+}
+
+/*We only want to retrieve the values from FirstName,LastName and MiddleName,
+	not any other values if they are available in class Person*/
+public class Person
+{
+	private string FirstName, MiddleName, LastName;
+	
+	public Person(string firstName, string lastName, string middeleName)
+	{
+		this.FirstName = firstName;
+		this.LastName = lastName;
+		this.MiddleName = middeleName;
+	}
+	
+	public IEnumerable<string> Names
+	{
+		get
+		{
+			yield return FirstName;
+			yield return LastName;
+			yield return MiddleName;
+		}
+	}
+}
+
+Output
+
+Person1
+Person2
+Person3
