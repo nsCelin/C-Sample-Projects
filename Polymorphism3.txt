@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SamplePrograms
+{
+    class Polymorphism2
+    {
+        public void Test() { Console.WriteLine("A::Test()"); }
+    }
+
+    class BA : Polymorphism2
+    {
+        public new void Test() { Console.WriteLine("B::Test()"); }
+    }
+
+    class CA : BA
+    {
+        public new void Test() { Console.WriteLine("C::Test()"); }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Polymorphism2 a = new Polymorphism2();
+            BA b = new BA();
+            CA c = new CA();
+
+            a.Test(); // output --> "A::Test()"
+            b.Test(); // output --> "B::Test()"
+            c.Test(); // output --> "C::Test()"
+
+            a = new BA();
+            a.Test(); // output --> "A::Test()"
+
+            b = new CA();
+            b.Test(); // output --> "B::Test()"
+
+            Console.ReadKey();
+        }
+    }
+}
