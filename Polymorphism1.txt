@@ -1,0 +1,30 @@
+using System;
+
+namespace SamplePrograms
+{
+    class Polymorphism
+    {
+        public void Test() { Console.WriteLine("A::Test()"); }
+    }
+
+    class B : Polymorphism { }
+
+    class C : B { }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Polymorphism a = new Polymorphism();
+            a.Test(); // output --> "A::Test()"
+
+            B b = new B();
+            b.Test(); // output --> "A::Test()"
+
+            C c = new C();
+            c.Test(); // output --> "A::Test()"
+
+            Console.ReadKey();
+        }
+    }
+}
