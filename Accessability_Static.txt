@@ -1,0 +1,25 @@
+using System;
+
+namespace SamplePrograms
+{
+    class Accessability_Static
+    {
+        int a;
+
+        public static void Main(String[] args)
+        {
+            CheckStatusAccess();
+        }
+
+        /*Whether it is a static main or a normal static method, 
+         an object instance is needed to access non-static methods*/
+        public static void CheckStatusAccess()
+        {
+            //var b = a;
+            /*This throws compile time exception because 'An object reference is required for the non-static field, method or property.'*/
+
+            NormalClass normal = new NormalClass();
+            string hello = normal.PrintHello();
+        }
+    }
+}

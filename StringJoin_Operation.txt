@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+/*https://www.dotnetperls.com/string-join */
+namespace SamplePrograms
+{
+    class StringJoin
+    {
+        /*static void Main()
+        {
+            string[] arr = { "one", "two", "three" };
+            UsingJoin(arr);
+            CombineB(arr);
+        }*/
+
+        static void UsingJoin (string[] arr)
+        {
+            // "string" can be lowercase.
+            Console.WriteLine(string.Join(",", arr)); // one,two,three
+
+            // ... "String" can be uppercase.
+            Console.WriteLine(String.Join(",", arr)); // one,two,three
+        }
+
+        static string CombineB(string[] arr)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (string s in arr)
+            {
+                builder.Append(s).Append(",");
+            }
+            String Combined = builder.ToString().TrimEnd(new char[] { ',' });
+            return Combined; // one,two,three
+        }
+    }
+}
