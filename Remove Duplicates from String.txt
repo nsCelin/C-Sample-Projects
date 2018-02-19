@@ -1,0 +1,58 @@
+Approach1
+namespace SamplePrograms
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string duplicate = "Cahalparrc";
+            new Program().RemoveDuplicates(duplicate);
+        }
+
+        public string RemoveDuplicates (string With_duplicate)
+        {
+            string table = string.Empty;
+            string result = "";
+
+            foreach(char c in With_duplicate)
+            {
+                var a = table.IndexOf(c); //this value will be -1 for all the first charcter entries into table
+                if(table.IndexOf(c)== -1)
+                {
+                    table += c; //if this line is not included, table will be always empty
+                    result += c;
+                }
+            }
+
+            return result;
+            
+        }
+    }   
+}
+
+Approach2
+
+using System.Linq;
+
+namespace SamplePrograms
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string duplicate = "Cahalparrc";
+            new Program().RemoveDuplicates(duplicate);
+        }
+
+        public string RemoveDuplicates (string With_duplicate)
+        {
+            var table = With_duplicate.ToCharArray().Distinct().Select(x => x); //Returns an IEnumerable<char>
+            var result = string.Concat(table); //Returns output Cahlprc
+
+            var result1 = new string(table.ToArray()); //Returns output Cahlprc
+
+            return result;
+            
+        }
+    }   
+}

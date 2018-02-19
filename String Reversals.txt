@@ -1,0 +1,52 @@
+Approach 1
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(ReverseString("P1zza"));
+        }
+
+        public static string ReverseString(string s)
+        {
+            string temp = string.Empty;
+
+            for(int i = s.Length-1; i>=0; i--)
+            //if i = s.Length, then it will show array out of bound exception
+            {
+                if(char.IsLetter(s[i]))
+                {
+                    temp += s[i].ToString();
+                }               
+            }
+            return temp;
+
+        }
+    }
+
+Approach 2
+
+using System;
+
+namespace SamplePrograms
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(ReverseString("P1zza"));
+        }
+
+        public static string ReverseString(string s)
+        {
+            string temp = string.Empty;
+
+            char[] reverse = s.ToCharArray();
+            Array.Reverse(reverse);
+            string output = new string(reverse);
+            return temp;
+
+        }
+    }
+}
+

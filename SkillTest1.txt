@@ -1,0 +1,81 @@
+using System.Linq;
+
+namespace SamplePrograms
+{
+    class SkillTest
+    {
+        static void Main(string[] args)
+        {
+            SkillTest skill = new SkillTest();
+            skill.CodePolicy();
+            skill.TotalArrayCount();
+            skill.Sorting();
+            skill.ReturnNumbersFromBothArrays();
+            skill.findLessThan();
+            skill.ReverseDigits();
+        }
+
+        public void CodePolicy()
+        {
+            /*Get total of numbers in an array*/
+            int[] numbers = {5,4,1,3,9,8,6,7,2,0};
+            double numSum = numbers.Sum(); //45
+        }
+
+        public void TotalArrayCount()
+        {
+            /*Get total of numbers in an array*/
+            string[] words = {"cherry","apple","blueberry" };
+            double wordLength = words.Sum(w => w.Length);
+        }
+
+        public void Sorting()
+        {
+            /*Sort list of digits, first by length of their name, and then alphabetically by name itself*/
+            string[] digits = {"zero","one","two","three","four","five","six","seven","eight","nine" };
+
+            var sortedDigits = from d in digits
+                               orderby d.Length,d
+                               select d;
+        }
+
+        /*Returns all pairs of numbers from both arrays such that number from numbersA is less than 
+         number from numbersB*/
+        public void ReturnNumbersFromBothArrays()
+        {
+            int[] numbersA = {0,2,4,5,6,8,9};
+            int[] numbersB = {1,3,5,7,8};
+
+            var pairs = from a in numbersA
+                        from b in numbersB
+                        where a < b
+                        select new { a,b};
+                        
+        }
+
+        public void findLessThan()
+        {
+            /*Find all numbers less than 5*/
+            int[] numbers = {5,4,1,3,9,8,6,7,2,0};
+            var lowNums = from n in numbers
+                          where n < 5
+                          select n;
+        }
+
+        public void FindDigitsShorterThanValue()
+        {
+            /*Returns digits whose name is shorter than their value*/
+            string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            /*var shortDigits = digits.Length(digits.Length <index);*/
+        }
+
+        /*List all digits in the array whose second letter is 'i' that is reversed from the order in original array*/
+        public void ReverseDigits()
+        {
+            string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            var reversed = from d in digits.Reverse()
+                           where d[1] == 'i'
+                           select d;
+        }
+    }
+}

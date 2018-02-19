@@ -1,0 +1,36 @@
+using System;
+
+namespace SamplePrograms
+{
+    class Reference_Parameters
+    {
+        /*static void Main(string[] args)
+        {
+            int a = 10, b = 20, max=0;
+            /*Reference parameters must be defined, initialized and assigned before they are 
+            * passed to function, else you may encounter a compile time error.
+            * Hence max value is initialized.*/
+
+            /*int min = MultipleReturns(a, b, ref max); //If the value of max is not assigned, it shows unassigned error for max
+            Console.WriteLine("Minimum Value: " + min);
+            Console.WriteLine("Maximum Value: " + max);
+        }*/
+
+        public static int MultipleReturns(int a, int b, ref int max)
+        {
+            if(a<b)
+            {
+                max = b;
+                /*It is  not mandatory to initialize or assign in a 'called method' as in out.
+                 * The value of max manipulated will be passed over to MultipleReturns*/
+
+                return a;
+            }
+            else
+            {
+                max = a;
+                return b;
+            }
+        }
+    }
+}

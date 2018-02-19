@@ -1,0 +1,17 @@
+using System;
+
+namespace SamplePrograms
+{
+    public class NormalClass
+    {
+       public NormalClass()
+       {
+       }
+
+       public string PrintHello()
+       {
+            Console.WriteLine("Print Hello");
+            return "Hello";
+       }
+    }
+}

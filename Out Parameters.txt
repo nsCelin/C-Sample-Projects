@@ -1,0 +1,32 @@
+using System;
+
+namespace SamplePrograms
+{
+    class Out_Parameters
+    {
+        /*static void Main(string[] args)
+        {
+            int a = 10, b = 20, max;//it is not mandatory to assign the value of max
+            int min = MultipleReturns(a, b, out max);
+            Console.WriteLine("Minimum Value: " + min);
+            Console.WriteLine("Maximum Value: " + max);
+        }*/
+
+        public static int MultipleReturns(int a, int b, out int max)
+        {
+            if (a < b)
+            {
+                max = b;
+                /*It is mandatory to initialize or assign in a 'called method' for out.
+                 * Otherwise it throws compilation error*/
+
+                return a;
+            }
+            else
+            {
+                max = a;
+                return b;
+            }
+        }
+    }
+}
