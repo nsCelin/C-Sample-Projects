@@ -1,0 +1,11 @@
+namespace SamplePrograms
+{
+    class Question4
+    {
+        public Question4() : this(10) { }
+
+        public Question4(int pValue)  : this(15, "New") { }
+
+        public Question4(int nValue, string nvalues) { }
+    }
+}

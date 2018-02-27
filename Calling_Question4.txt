@@ -1,0 +1,32 @@
+using System;
+
+namespace SamplePrograms
+{
+    class Calling_Question4
+    {
+        static void Main(String[] args)
+        {
+            Question4 que = new Question4();
+            
+        }
+    }
+}
+
+/*Refer Question4. We can see that we can call the constructor with parameter,
+ * when the Main method is called, without creating any other new instances of the Question4 (with parameters)
+ 
+  If Question4 had been so, then 
+  we need to call to pass values into Question4.
+
+  Question4 que = new Question4();
+  Question4 que = new Question4(15);
+  Question4 que = new Question4(15, "New");
+
+   class Question4
+    {
+        public Question4() // this would call both the super constructors
+
+        public Question4(int pValue)  { } // this would call one of the super constructors
+
+        public Question4(int nValue, string nvalues) { } 
+    }*/

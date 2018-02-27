@@ -1,0 +1,50 @@
+using System;
+
+namespace SamplePrograms
+{
+    class Question_Static1
+    {
+        public static int TestValue;
+
+        public Question_Static1()
+        {
+            if (TestValue == 10)
+            {
+                TestValue = 5;
+            }
+        }
+        static Question_Static1()
+        {
+            if (TestValue == 0)
+            {
+                TestValue = 10;
+            }
+
+        }
+
+        public void Print()
+        {
+            if (TestValue == 5)
+            {
+                TestValue = 6;
+            }
+            Console.WriteLine("TestValue : " + TestValue);
+
+        }
+
+        /*public static void Main(string[] args)
+        {
+
+            Question_Static1 t = new Question_Static1();
+            t.Print();
+        }*/
+    }
+}
+
+/*Step 1 : Static Initializer is initialized, so TestValue is set to 0.
+  Step 2 : Then, Static Constructor is called, sets the value as 10.
+  Step 3:  Then inside Main method, TestStatic is instantiated, it calls its constructor, as the value is 10,
+            TestValue = 5 is set.
+  Step 4: Then it calls print function, and then prints the TestValue as6
+  
+  So the value of static can be changed using a constructor.*/

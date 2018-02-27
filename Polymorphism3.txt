@@ -40,6 +40,9 @@ namespace SamplePrograms
             b = new CA();
             b.Test(); // output --> "B::Test()"
 
+            Polymorphism2 z = new CA(); //Not as in Java, the overriding concept
+            z.Test(); // output --> "A::Test()"
+
             Console.ReadKey();
         }
     }

@@ -31,12 +31,17 @@ namespace SamplePrograms
                 b.Test(); // output --> "B::Test()"
                 c.Test(); // output --> "C::Test()"
 
-                //This is behaving similar to that of the overriding
+                 //This is not behaving similar to that of the overriding in Java. 
+                 //It is calling as per the parent reference of A and not based on overriden
+                 //child implementation.
                 a = new B();
                 a.Test(); // output --> "A::Test()"
 
                 b = new C();
                 b.Test(); // output --> "B::Test()"
+
+                A s = new C();
+                s.Test();// output --> "A::Test()"
 
                 Console.ReadKey();
             }

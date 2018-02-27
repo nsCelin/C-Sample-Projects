@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SamplePrograms
+{
+    class Question_Static2
+    {
+        public static int TestValue;
+
+        public Question_Static2()
+        {
+            if (TestValue == 0)
+            {
+                TestValue = 5;
+            }
+        }
+        static Question_Static2()
+        {
+            if (TestValue == 10)
+            {
+                TestValue = 10;
+            }
+
+        }
+
+        public void Print()
+        {
+            if (TestValue == 5)
+            {
+                TestValue = 6;
+            }
+            Console.WriteLine("TestValue : " + TestValue);
+
+        }
+
+        /*public static void Main(string[] args)
+        {
+            Question_Static2 t = new Question_Static2();
+            t.Print();
+        }*/
+    }
+}
+
+/*Output is 6.
+ * TestValue is initialized as 0, Wont pass through the static constructor.
+ * The value is set in the constructor.
+ */
