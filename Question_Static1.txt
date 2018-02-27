@@ -1,0 +1,48 @@
+using System;
+
+namespace SamplePrograms
+{
+    class TestStatic
+    {
+        public static int TestValue;
+
+        public TestStatic()
+        {
+            if (TestValue == 0)
+            {
+                TestValue = 5;
+            }
+        }
+        static TestStatic()
+        {
+            if (TestValue == 0)
+            {
+                TestValue = 10;
+            }
+
+        }
+
+        public void Print()
+        {
+            if (TestValue == 5)
+            {
+                TestValue = 6;
+            }
+            Console.WriteLine("TestValue : " + TestValue);
+
+        }
+
+        /*public static void Main(string[] args)
+        {
+
+            TestStatic t = new TestStatic();
+            t.Print();
+        }*/
+    }
+}
+
+/*Step 1 : Static Initializer is initialized, so TestValue is set to 0.
+  Step 2 : Then, Static Constructor is called, sets the value as 10.
+  Step 3: Then inside Main method, TestStatic is instantiated, it calls its constructor, but as the value is already 10,
+          it exits the loop.
+  Step 4: Then it calls print function, and then prints the TestValue.*/
